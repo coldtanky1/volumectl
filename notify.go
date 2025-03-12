@@ -11,6 +11,7 @@ import (
 	"github.com/adrg/xdg"
 	"github.com/esiqveland/notify"
 	"github.com/godbus/dbus"
+	get_icons "github.com/vially/volumectl/geticons"
 	"golang.org/x/xerrors"
 )
 
@@ -47,15 +48,17 @@ func (c *notificationClient) showVolumeNotification(volume int, mute bool) error
 }
 
 func (c *notificationClient) notificationVolumeIcon(volume int, mute bool) string {
-	iconName := "notification-audio-volume-medium"
+	icons, _ := get_icons.GetIconsFromPath()
+
+	iconName := icons.VolumeMedium
 	if mute {
-		iconName = "notification-audio-volume-muted"
+		iconName = icons.VolumeMuted
 	} else if volume == 0 {
-		iconName = "notification-audio-volume-off"
+		iconName = icons.VolumeMuted
 	} else if volume > 70 {
-		iconName = "notification-audio-volume-high"
+		iconName = icons.VolumeHigh
 	} else if volume < 30 {
-		iconName = "notification-audio-volume-low"
+		iconName = icons.VolumeLow
 	}
 	return iconName
 }

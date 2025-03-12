@@ -1,5 +1,10 @@
 # volumectl - CLI utility to control the volume
 
+## My fork.
+It's highly recommended you use this with dunst as it directly uses the `dunstrc` config file.
+
+### What changed?
+The volume icon used to be hard coded but now they automatically get loaded from the `icon_path` specified in `dunstrc`.
 
 ## Features
 
